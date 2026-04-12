@@ -13,5 +13,5 @@ cd /workspace/repo
 git add /workspace/repo/data/ scripts/fetch-csvs.sh
 git commit -m "Add data files for $(date +%F) and fetch script."
 
-git remote add origin git@github.com:xiw013/COGS_205B.git
+# git remote add origin git@github.com:xiw013/COGS_205B.git
 git push origin master
