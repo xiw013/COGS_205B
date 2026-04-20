@@ -4,10 +4,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 class SignalDetection:
-    def SignalDetection(hits, misses, false_alarms, correct_rejections):
+    
+    def __init__(self, hits, misses, false_alarms, correct_rejections):
         # chekcing for if the input are valid
         for value in [hits, misses, false_alarms, correct_rejections]:
-            if not isinstance(value, int) or i < 0:
+            if not isinstance(value, int) or isinstance(value, bool) or value < 0:
                 raise ValueError("All input must be a non-negative integer.")
             if not np.isfinite(value):
                 raise ValueError("All input must be a finite number.")
@@ -45,25 +46,25 @@ class SignalDetection:
     def __add__(self, other):
         if not isinstance(other, SignalDetection):
             raise TypeError("Can only add SignalDetection object to SignalDetection object, got {type(other).__name__}")
-        return SignalDetection(
+        return SignalDetection (
             self.hits + other.hits,
             self.misses + other.misses,
             self.false_alarms + other.false_alarms,
-            self.correct_rejections + other.correct_rejections
+            self.correct_rejections + other.correct_rejections,
         )
 
     def __sub__(self, other):
-       if not isinstance(other, SignalDetection):
+        if not isinstance(other, SignalDetection):
             raise TypeError("Can only add SignalDetection object to SignalDetection object, got {type(other).__name__}")
-        return SignalDetection(
+        return SignalDetection (
             self.hits - other.hits,
             self.misses - other.misses,
             self.false_alarms - other.false_alarms,
-            self.correct_rejections - other.correct_rejections
+            self.correct_rejections - other.correct_rejections,
         )
 
     def __mul__(self, factor):
-        if not isinstance(factor, int) or factor < 0:
+        if not isinstance(factor, int) or isinstance(factor, bool) or factor < 0:
             raise ValueError("factor must be a non-negative integer.")
         if not np.isfinite(factor):
             raise ValueError("factor must be finite.")
@@ -100,3 +101,34 @@ class SignalDetection:
         ax.set_xlabel("Hit rate")
         ax.set_ylabel("False alarm rate")
         return fig, ax
+
+    def plot_sdt(self):
+        d = self.d_prime()
+        c = self.criterion()
+
+        x = np.linspace(-4, d + 4, 1000)
+
+        fig, ax = plt.subplots()
+
+        # plot curves
+        ax.plot(x, norm.pdf(x, 0, 1), label="Noise")
+        ax.plot(x, norm.pdf(x, d, 1), label="Signal")
+
+        # means
+        # ax.axvline(0, linestyle="--")   # noise mean
+        # ax.axvline(d, linestyle="--")   # signal mean
+
+        # criterion
+        ax.axvline(c, linestyle="--", label="Criterion")
+
+        # draw d'
+        ax.plot([0, d], [0.1, 0.1])   # horizontal line
+        ax.text(d/2, 0.12, f"d' = {d:.2f}", ha="center")
+
+        ax.set_xlabel("Evidence")
+        ax.set_ylabel("Density")
+        ax.set_title("Signal Detection")
+        ax.legend()
+
+        return fig, ax
+    
