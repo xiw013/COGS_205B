@@ -1,0 +1,7 @@
+I changed my tests after realizing that my original implementation of the spike model assumed theta = 0.5, instead of integrating over a range of theta values from 0.43 to 0.53. Because of this, the test also evaluated the result based on that assumption, which caused the AI agent to repeatedly produce code using theta = 0.5. This showed me that AI agents rely heavily on the test cases to infer the expected implementation. When my tests were very specific, the agent could often reproduce the exact method I intended. However, after I changed the spike test to be more ambiguous, the agent depended much more on the written prompt to determine how the function should be implemented.
+
+Since each attempt takes some time to run, I only repeated the process three times. There are still a few test cases that fail because of floating-point precision issues, but the final implementation already works well overall.
+
+The implementation for the slab model is relatively straightforward using the analytical solution. I did not realize this when implementing myself. The code also handles all basic edge cases and remains fairly readable, and all required functionality is clearly defined.
+
+One limitation is that the implementation still depends heavily on carefully designed prompts and tests. If the specifications or tests are unclear, the generated code can easily become inconsistent with the intended mathematical model.

@@ -1,0 +1,58 @@
+Implement a class called BayesFactor with these methods:
+
+__init__(n, k)
+likelihood(theta)
+evidence_slab()
+evidence_spike()
+bayes_factor()
+
+The class compares two models for binomial data:
+
+1. Slab model:
+   theta ~ Uniform(0, 1)
+
+2. Spike model:
+   theta ~ Uniform(a, b), where a = 0.47 and b = 0.53
+
+The Bayes factor is defined as:
+
+B = evidence_spike / evidence_slab
+
+where evidence means the marginal likelihood of the data under each model.
+
+Do not silently change invalid input values. If an input is invalid, raise an appropriate error.
+
+__init__(n, k):
+- Store n and k.
+- n is the total number of trials.
+- k is the number of successes.
+- Check that n and k are valid.
+- n must be a nonnegative integer.
+- k must be a nonnegative integer.
+- k must be less than or equal to n.
+
+likelihood(theta):
+- Compute the binomial likelihood of the observed data given theta.
+- The likelihood should be:
+  choose(n, k) * theta^k * (1 - theta)^(n - k)
+- Check that theta is valid.
+- theta must be between 0 and 1.
+- If theta is invalid, raise an error.
+
+evidence_slab():
+- Compute the marginal likelihood under theta ~ Uniform(0, 1).
+- Return the evidence value.
+- Handle possible numerical or invalid-value errors.
+
+evidence_spike():
+- Compute the marginal likelihood under theta ~ Uniform(0.47, 0.53).
+- Return the evidence value.
+- Handle possible numerical or invalid-value errors.
+
+bayes_factor():
+- Compute and return evidence_spike() / evidence_slab().
+- Raise an error if evidence_slab() is zero.
+
+Do not modify test_bayes_factor.py. Only read it and use it to understand the expected behavior.
+Make all code changes only inside bayes_factor.py.
+Use test_bayes_factor.py to test whether the implementation passes the tests. The goal is to pass all tests except the ones that are intentionally designed to fail.
