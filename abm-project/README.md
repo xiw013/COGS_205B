@@ -7,7 +7,7 @@ The model contains (N=300) agents. At each round (t), each agent (i) chooses one
 
 $a_i(t) \in {A, B, S},$
 
-where (A) is Zone A, (B) is Zone B, and (S) means Stay Out.
+where $A$ is Zone A, $B$ is Zone B, and $S$ means Stay Out.
 
 The reward pools for the two zones are stochastic:
 
@@ -109,17 +109,17 @@ $P(a_i(t)=j)=\frac{\exp(U_j(t)/\tau_P)}{\sum_{\ell \in {A,B,S}}\exp(U_\ell(t)/\t
 
 The simulation records both round-level dynamics and overall outcomes to evaluate the effects of different population compositions.
 
-At each round (t), the average population reward is computed as:
+At each round $t$, the average population reward is computed as:
 
 $\bar r(t)=\frac{1}{N}\sum_{i=1}^{N} r_i(t),$
 
-where (r_i(t)) is the reward received by agent (i) during round (t). The average reward over the entire simulation is obtained by averaging (\bar r(t)) across all rounds.
+where $r_i(t)$ is the reward received by agent $i$ during round $t$. The average reward over the entire simulation is obtained by averaging $\bar r(t)$ across all rounds.
 
 Each agent accumulates wealth over the course of the simulation,
 
 $W_i=\sum_{t=1}^{T}r_i(t),$
 
-where (T) is the total number of rounds. For each agent type (g) (Random, Memory, and Predictive), the model records both the total cumulative wealth:
+where $T$ is the total number of rounds. For each agent type $g$ (Random, Memory, and Predictive), the model records both the total cumulative wealth:
 
 $W_g=\sum_{i=g}W_i,$
 
@@ -129,18 +129,17 @@ $\bar r_g=\frac{1}{N_gT}\sum_{i=g}W_i,$
 
 The proportion of the population selecting each action is tracked throughout the simulation:
 
-$
-f_A(t)=\frac{n_A(t)}{N}, \qquad
-f_B(t)=\frac{n_B(t)}{N}, \qquad
-f_S(t)=\frac{n_S(t)}{N},$
+$f_A(t)=\frac{n_A(t)}{N}, \qquad$
+$f_B(t)=\frac{n_B(t)}{N}, \qquad$
+$f_S(t)=\frac{n_S(t)}{N},$
 
-where (n_A(t)), (n_B(t)), and (n_S(t)) denote the numbers of agents choosing Zone A, Zone B, and Stay Out, respectively.
+where $n_A(t)$, $n_B(t)$, and $n_S(t)$ denote the numbers of agents choosing Zone A, Zone B, and Stay Out, respectively.
 
 To quantify collective behavior, the model computes a synchronization measure:
 
 $H(t)=\max{(f_A(t),f_B(t),f_S(t))}.$
 
-which represents the proportion of agents choosing the most popular action at round (t). Higher values of $H(t)$ indicate stronger herding behavior, whereas lower values indicate a more balanced distribution of choices across the available actions.
+which represents the proportion of agents choosing the most popular action at round $t$. Higher values of $H(t)$ indicate stronger herding behavior, whereas lower values indicate a more balanced distribution of choices across the available actions.
 
 To evaluate whether rewards are distributed evenly across the population or concentrated among a subset of agents, cumulative wealth inequality is measured using the Gini coefficient,
 
