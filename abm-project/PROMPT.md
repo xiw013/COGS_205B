@@ -62,6 +62,8 @@ The RandomAgent proportion should remain fixed across conditions.
 
 For each proportion, the simulation should be repeated across multiple random seeds.
 
+# Engineering goals
+
 Keep the project intentionally small and interpretable.
 
 The project should contain only:
