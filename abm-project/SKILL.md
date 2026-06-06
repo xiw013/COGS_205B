@@ -1,6 +1,7 @@
 Project Goal
 
 Build a simple ABM of a competitive resource environment where agents choose between Zone A, Zone B, or Stay Out. The main hypothesis is that higher-order predictive agents may perform well when rare, but lose their advantage when they become common because their anti-crowding strategies synchronize.
+
 # Model Overview
 The environment contains three possible actions each round: 
 1. Zone A
