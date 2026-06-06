@@ -1,0 +1,37 @@
+FF..FF....
+======================================================================
+FAIL: test_bayes_factor_basic (test_bayes_factor.TestBayesFactor.test_bayes_factor_basic)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/repo/week08homework/tests/test_bayes_factor.py", line 177, in test_bayes_factor_basic
+    self.assertAlmostEqual(result, (1/6)/0.3125)
+AssertionError: 1.8705048600000003 != 0.5333333333333333 within 7 places (1.3371715266666668 difference)
+
+======================================================================
+FAIL: test_bayes_factor_edge_cases (test_bayes_factor.TestBayesFactor.test_bayes_factor_edge_cases)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/repo/week08homework/tests/test_bayes_factor.py", line 184, in test_bayes_factor_edge_cases
+    self.assertEqual(result1, (1/11) / ((1-0.5)**10))
+AssertionError: 0.011328127857146967 != 93.0909090909091
+
+======================================================================
+FAIL: test_evidence_spike_edge (test_bayes_factor.TestBayesFactor.test_evidence_spike_edge)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/repo/week08homework/tests/test_bayes_factor.py", line 156, in test_evidence_spike_edge
+    self.assertAlmostEqual(result1, 0.001025)
+AssertionError: 0.0010298298051951789 != 0.001025 within 7 places (4.829805195178793e-06 difference)
+
+======================================================================
+FAIL: test_evidence_spike_normal (test_bayes_factor.TestBayesFactor.test_evidence_spike_normal)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/repo/week08homework/tests/test_bayes_factor.py", line 150, in test_evidence_spike_normal
+    self.assertAlmostEqual(result, 0.3106)
+AssertionError: 0.31175081000000004 != 0.3106 within 7 places (0.0011508100000000576 difference)
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.001s
+
+FAILED (failures=4)
